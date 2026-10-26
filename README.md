@@ -20,6 +20,7 @@ Usage of `ode67` is very similar to MATLAB's `ode45`. An example use case is sho
 rate_func = @(t,X) [X(2); -2*X(2) - 5*X(1)];
 X0 = [1; 0];
 tspan = [0 8];
+max_local_err = 1e-6;
 [t, X] = ode67(rate_func, tspan, X0, max_local_err);
 ```
 The inputs are:
