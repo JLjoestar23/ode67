@@ -4,7 +4,7 @@
 % rate_func_in: function used to compute dXdt
 % tspan: two element vector that denotes the integration endpoints
 % X0: initial condition vector
-% p: how error scales with step size (error = k*h^p)
+
 % error_desired: the desired local truncation error at each step
 %
 % OUTPUTS:
@@ -26,7 +26,6 @@ function [t_list, X_list] = ode67(rate_func, tspan, X0, max_local_err)
     XA = X0(:);
     X_list = XA;
     h = (t_end - t) / 10; % initial timestep based on time interval
-    p = 6;
     
     % integrate within tspan
     while t < t_end
@@ -59,7 +58,7 @@ end
 % This function computes X(t+h) and the size of the succeeding time step. 
 % It also determines whether to accept/reject the projected value of X(t+h)
 % based on the estimated local truncation error.
-function [XB, h_next, redo, XB1, XB2] = ode67_step(rate_func_in, t, XA, h, max_local_err, p)
+function [XB, h_next, redo, XB1, XB2] = ode67_step(rate_func_in, t, XA, h, max_local_err)
 
     arguments
         rate_func_in (1,1) function_handle
@@ -67,7 +66,6 @@ function [XB, h_next, redo, XB1, XB2] = ode67_step(rate_func_in, t, XA, h, max_l
         XA (:,1) double
         h (1,1) double
         max_local_err (1,1) double = 1e-6
-        p (1,1) double = 6
     end
     
     % Butcher Tableau for the 6(7) method
@@ -108,7 +106,10 @@ function [XB, h_next, redo, XB1, XB2] = ode67_step(rate_func_in, t, XA, h, max_l
     XB2 = XA + h * (K*B(2,:)');
 
     % various constants
-    alpha = 6; % step size increase factor cap
+    alpha = 5; % step size increase factor cap
+
+    % how error scales with step size (error = k*h^p)
+    p = 6;
     
     % approximate the local truncation error
     err = norm(XB1-XB2);
