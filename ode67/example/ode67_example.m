@@ -23,7 +23,7 @@ plot(t_ana, X_ana(2,:), '-', 'Color', '#e25759', 'LineWidth', 2, 'DisplayName', 
 plot(t, X(1,:), '.', 'Color', '#9d2c00', 'MarkerSize', 15, 'LineWidth', 1.5, 'DisplayName', 'x (ode67)');
 plot(t, X(2,:), '.', 'Color', '#003a7d', 'MarkerSize', 15, 'LineWidth', 1.5, 'DisplayName', 'x'' (ode67)');
 xlabel('Time (s)'); ylabel('State');
-title(sprintf('Damped oscillator: RK6(7), %d timesteps', numel(t)-1));
+title(sprintf('Damped oscillator: ode67, %d timesteps', numel(t)-1));
 legend('Location', 'northeast', 'NumColumns', 2);
 grid on;
 hold off;
