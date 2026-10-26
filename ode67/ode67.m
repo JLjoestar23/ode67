@@ -36,7 +36,7 @@ function [t_list, X_list] = ode67(rate_func, tspan, X0, max_local_err)
         end
 
         % evaluate next step
-        [XB, h_next, redo] = ode67_step(rate_func, t, XA, h, max_local_err, p);
+        [XB, h_next, redo] = ode67_step(rate_func, t, XA, h, max_local_err);
         
         % if |XB1-XB2| > desired_error
         if redo
