@@ -35,7 +35,7 @@ The outputs are:
 
 Here is a plot result of `ode67` applied to the damped 2nd-order system from the code snippet above:
 <p align="center">
-  <img width="700" alt="plot" src="https://github.com/user-attachments/assets/8a63582d-418e-40e0-a900-5e2257cdbc1f" />
+  <img width="700" alt="demo_plot" src="https://github.com/user-attachments/assets/d59cbf67-f566-4b69-8608-a8410a93b9e5" />
 </p>
 
 ## Analysis
