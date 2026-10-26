@@ -21,10 +21,10 @@ function global_trunc_error_analysis(rate_func, analytical_soln, tspan, num_tria
 
     figure;
     loglog(h_avg_list, global_errors, 'b.', 'MarkerSize', 15, ...
-           'DisplayName', 'RK6(7) data');
+           'DisplayName', 'ode67 data');
     hold on;
     loglog(10.^log_h, 10.^fit_h, 'r--', 'LineWidth', 4, ...
-           'DisplayName', sprintf('RK6(7) fit (slope = %.2f)', pf(1)));
+           'DisplayName', sprintf('ode67 fit (slope = %.2f)', pf(1)));
     title('Global Error vs. Average Step Size');
     xlabel('Average timestep (s)');
     ylabel('Global error at end time');
