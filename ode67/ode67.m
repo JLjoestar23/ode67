@@ -10,14 +10,13 @@
 % OUTPUTS:
 % t_list: time vector
 % X_list: state vector
-function [t_list, X_list] = ode67(rate_func, tspan, X0, max_local_err, p)
+function [t_list, X_list] = ode67(rate_func, tspan, X0, max_local_err)
 
     arguments
         rate_func (1,1) function_handle
         tspan (1,:) double
         X0 (:,1) double
         max_local_err (1,1) double = 1e-6
-        p (1,1) double = 7
     end
     
     % intialize
@@ -27,6 +26,7 @@ function [t_list, X_list] = ode67(rate_func, tspan, X0, max_local_err, p)
     XA = X0(:);
     X_list = XA;
     h = (t_end - t) / 10; % initial timestep based on time interval
+    p = 6;
     
     % integrate within tspan
     while t < t_end
@@ -67,7 +67,7 @@ function [XB, h_next, redo, XB1, XB2] = ode67_step(rate_func_in, t, XA, h, max_l
         XA (:,1) double
         h (1,1) double
         max_local_err (1,1) double = 1e-6
-        p (1,1) double = 4
+        p (1,1) double = 6
     end
     
     % Butcher Tableau for the 6(7) method
